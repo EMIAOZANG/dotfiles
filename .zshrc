@@ -100,7 +100,7 @@ alias me='cd /Users/zhaojunbo/Projects/zhaojunbo.github.io'
 alias V='vim '
 alias G='g++ -Wall -std=c++11'
 alias fortune='fortune | cowsay | lolcat'
-alias F='figlet '
+#alias F='figlet '
 ## Some global alias
 alias -g xargs='gxargs'
 alias -g find='gfind'
@@ -118,11 +118,11 @@ alias -s html=chromium
 ## git
 alias -g HEAD^='HEAD\^'
 ## hub
-alias git=hub
+#alias git=hub
 
 # globbing patterns to match all the files except some
 setopt extended_glob
 
-figlet Dpark Doc\!
+#figlet Dpark Doc\!
 echo -e '\n'
-figlet OpenBLAS
+#figlet OpenBLAS

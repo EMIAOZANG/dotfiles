@@ -10,10 +10,10 @@ call vundle#rc()
 " let Vundle manage Vundle
 " required! 
 Bundle 'gmarik/vundle'
-Bundle 'tomasr/molokai'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'majutsushi/tagbar'
 Bundle 'Raimondi/delimitMate'
+Bundle 'tomasr/molokai'
 
 "snipmate.vim
 Bundle "MarcWeber/vim-addon-mw-utils"
@@ -66,6 +66,7 @@ filetype plugin indent on     " required!
 """
 " common
 """
+set backspace=2
 set encoding=utf8
 set langmenu=zh_CN.UTF-8
 set imcmdline
@@ -128,6 +129,8 @@ let g:Powerline_symbols = 'fancy'
 "colorscheme solarized
 "let g:solarized_termcolors=256
 
+"fix the delete key
+:fixdel
 
 """
 " http://vim.wikia.com/wiki/Restore_cursor_to_file_position_in_previous_editing_session
@@ -220,3 +223,9 @@ autocmd BufNewFile,BufRead *.cu,*.cuh set ft=cuda
 let g:snipMate = {}
 let g:snipMate.scope_aliases = {}
 let g:snipMate.scope_aliases['cuda'] = 'cu'
+
+" remap # and / in visual mode for comment toggling
+vnoremap # :s#^#\##<cr>
+vnoremap -# :s#^\###<cr>
+vnoremap / :s/^/\/\/<cr>
+vnoremap -/ :s/^\/\//<cr>
