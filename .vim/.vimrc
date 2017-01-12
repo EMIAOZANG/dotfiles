@@ -33,9 +33,19 @@ Bundle 'scrooloose/syntastic'
 Bundle 'vim-scripts/google.vim'
 Bundle 'drmikehenry/vim-headerguard'
 Bundle 'derekwyatt/vim-scala'
+Bundle 'MattesGroeger/vim-bookmarks'
 
 Bundle 'vim-scripts/Python-Syntax-Folding'
 Bundle 'kien/ctrlp.vim'
+" configuration
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_working_path_mode = 'ra'
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip
+let g:ctrlp_max_files = 0
+let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
+let g:ctrlp_user_command = 'find %s -type f'
+
 Bundle 'vim-scripts/a.vim'
 Bundle "lepture/vim-jinja"
 Bundle 'pangloss/vim-javascript'
@@ -135,6 +145,11 @@ let g:Powerline_symbols = 'fancy'
 """
 " http://vim.wikia.com/wiki/Restore_cursor_to_file_position_in_previous_editing_session
 """
+
+function! FindInDir(p, path, type)
+  exe ':vim ' . a:p . ' ' . a:path . '/*.' . a:type. ' | cw'
+endfunction
+
 function! ResCur()
   if line("'\"") <= line("$")
     normal! g`"
@@ -229,3 +244,11 @@ vnoremap # :s#^#\##<cr>
 vnoremap -# :s#^\###<cr>
 vnoremap / :s/^/\/\/<cr>
 vnoremap -/ :s/^\/\//<cr>
+nnoremap <S-f> :vim <cword> **/* <bar> cw <Return>
+
+com -nargs=* Find call FindInDir(<f-args>)
+" Let Vim walk up directory hierarchy from CWD to root looking for tags file
+" " Tell EasyTags to use the tags file found by Vim
+set tags=./TAGS,TAGS;$HOME
+let g:easytags_dynamic_files = 1
+let g:easytags_events = ['BufWritePost']

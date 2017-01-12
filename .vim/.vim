@@ -1,1 +1,1 @@
-/Users/jlu/.files/.vim
+/Users/jiayilu/dotfiles/.vim
